@@ -4,30 +4,21 @@
 #include <iostream>
 class OptionsSet {
 private:
-  void validate() { std::cout << "Validating option\n"; };
+  void validate();
 
 public:
   char *name;
-  void execute() {
-    validate();
-    std::cout << "Executing option\n";
-  };
+  void execute();
 };
 
 class OptionsHandlerFactory {
 private:
   int argc;
   char *argv[];
-  OptionsSet parseOptions() { return OptionsSet(); }
+  OptionsSet parseOptions();
 
 public:
-  OptionsHandlerFactory(int argc, char *argv[]) {
-    argc = argc;
-    argv = argv;
-  }
-  void handle() {
-    OptionsSet options = parseOptions();
-    options.execute();
-  };
+  OptionsHandlerFactory(int argc, char *argv[]);
+  void handle();
 };
 #endif

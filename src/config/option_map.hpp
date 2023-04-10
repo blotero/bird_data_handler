@@ -3,6 +3,7 @@
 
 #include "options.hpp"
 #include <iostream>
+#include <map>
 
 enum OptionKey {
   INSERT_SINGLE,
@@ -15,14 +16,17 @@ enum OptionKey {
 class OptionMap {
 private:
   static OptionMap *pinstance_;
+  std::map<OptionKey, OptionsSet *> data;
 
 protected:
-  OptionMap() {}
+  OptionMap() {
+    // printf("Initialized option map instance in %p", this->pinstance_);
+  }
 
 public:
   char *info();
-  void set(OptionKey opk, OptionsSet ops);
-  OptionsSet get(OptionKey opk);
+  void set(OptionKey opk, OptionsSet *ops);
+  OptionsSet *get(OptionKey opk);
   static OptionMap *getInstance();
 };
 #endif

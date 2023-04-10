@@ -9,7 +9,7 @@ private:
 
 public:
   Configuration();
-  void setOptionMap(OptionMap *opMapPtr);
+  void loadDefault();
 };
 
 class Application {
@@ -18,7 +18,8 @@ private:
 
 public:
   Application();
-  void setConfig(Configuration *config);
+  Application(Configuration* configPtr);
+  void setConfig(Configuration *configPtr);
   void start();
 };
 
